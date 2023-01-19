@@ -1,3 +1,9 @@
+"""
+2023.01.19
+
+영어로 된 글자를 숫자로 치환
+맨 앞에 0이 올 수는 없음
+"""
 def solution(numbers):
     numbers = numbers.replace('one', '1')
     numbers = numbers.replace('two', '2')
