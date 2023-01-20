@@ -7,6 +7,7 @@ id 값도 없으면 "fail"
 맞는 정보면 "login" 출력
 """
 def solution(id_pw, db):
+    #  db_dict = {i[0]: i[1] for i in db}
     ac_dic = {}
     answer = ''
 
