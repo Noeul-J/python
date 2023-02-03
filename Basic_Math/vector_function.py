@@ -13,7 +13,7 @@ ax.tick_params(axis='x', labelsize=15)
 ax.tick_params(axis='y', labelsize=15)
 ax.tick_params(axis='z', labelsize=15)
 
-
+# 이전버전
 # ax.xaxis.set_tick_params(labelsize=15)
 # ax.yaxis.set_tick_params(labelsize=15)
 # ax.zaxis.set_tick_parmas(labelsize=15)
@@ -23,16 +23,19 @@ ax.set_xlabel('$x$', fontsize=20)
 ax.set_ylabel('$y$', fontsize=20)
 ax.set_zlabel('$z$', fontsize=20)
 
-# eq(3,3)
+# r(t) = {x(t), y(t), z(t)} = {sin(6t), t/4, t**2/2}
 t = np.linspace(0, 2, 101)          # 0부터 2까지 중에 숫자 101개를 출력해라
 x = np.sin(6*t)
 y = 1/4 * t
 z = t**2 / 2
 
-ax.plt3D(x, y, z, c='k')
+# plot3D 함수에 x, y, z 좌표값을 넘겨서 그림을 그린다.
+ax.plot3D(x, y, z, c='k')
+
+# 첫번째, 50번째, 마지막 좌표를 특별히 표시
 ax.plot([x[0]], [y[0]], [z[0]], 'o', markersize=10, color='k', label="t = {:.2f}".format(t[0]))
 ax.plot([x[50]], [y[50]], [z[50]], '^', markersize=10, color='k', label="t = {:.2f}".format(t[50]))
-ax.plot([x[-1]], [y[-1]], [z[-1]], '*', markersize=10, color='k', label="t={:.2f}".format(t[-1]))
+ax.plot([x[-1]], [y[-1]], [z[-1]], '*', markersize=10, color='k', label="t = {:.2f}".format(t[-1]))
 
 ax.legend(fontsize=15, loc="upper left")
 
