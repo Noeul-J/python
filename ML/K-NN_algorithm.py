@@ -91,7 +91,7 @@ test_scaled = (test_input - mean) / std
 kn.score(test_scaled, test_target)
 print(kn.predict([new]))
 
-
+# scatter plot = 산점도
 # 모든 행에 대해서 첫번째 열의 정보를 가져다 달라 - 가로 a[:,0]
 # 모든 행에 대해서 두번째 열의 정보를 가져다 달라 - 세로 a[:,1]
 plt.scatter(train_scaled[:,0], train_scaled[:,1])
