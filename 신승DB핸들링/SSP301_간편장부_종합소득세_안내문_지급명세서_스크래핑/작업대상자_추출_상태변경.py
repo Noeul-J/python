@@ -17,19 +17,21 @@ def DB_Data_Export():
                         "FROM TB100023 AS t " \
                         "LEFT JOIN TB100020 AS b ON t.CSTID=b.CSTID " \
                         "LEFT JOIN TB100022 AS a ON t.BIZ_ID=a.BIZ_ID " \
-                        "WHERE IFNULL(t.HomeTaxPrint, '')='R' AND a.CST_TYPE_YEAR='2021' LIMIT 10;"
+                        "WHERE IFNULL(t.HomeTaxPrint, '')='Y' AND a.CST_TYPE_YEAR='2021' LIMIT 10;"
             curs.execute(targetSql)
             rs = curs.fetchall()
             
-            if rs != None :
-                for row in rs:
-                    statusSql = "UPDATE TB100023 SET HomeTaxPrint='I' WHERE BIZ_ID='"+str(row[1])+"';"
-                    curs.execute(statusSql)
-                    
-                conn.commit()
+            # if rs != None :
+            #     for row in rs:
+            #         # statusSql = "UPDATE TB100023 SET HomeTaxPrint='I' WHERE BIZ_ID='"+str(row[1])+"';"
+            #         # curs.execute(statusSql)
+            #
+            #     conn.commit()
             return rs
     finally:
         conn.close()
+
+
 result = DB_Data_Export()
 json_str = json.dumps(result, ensure_ascii=False).encode('cp949',errors = 'replace').decode('cp949')
 print("<peon>")

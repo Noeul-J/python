@@ -16,6 +16,11 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.linear_model import LinearRegression
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import Ridge
+import matplotlib.pyplot as plt
+from sklearn.linear_model import Lasso
+
 
 df = pd.read_csv("https://bit.ly/perch_csv")
 perch_full = df.to_numpy()
@@ -47,7 +52,7 @@ train_input, test_input, train_target, test_target = train_test_split(perch_full
 # poly.fit([[2, 3]])
 # print(poly.transform([[2, 3]])) # [[2. 3. 4. 6. 9.]]
 
-poly = PolynomialFeatures(degree=2, include_bias=False)        # 차수를 올리면 훈련 셋은 거의 완벽해지지만, 테스트 셋의 점수가 음수로 나올수도 있음(과대 적합)
+poly = PolynomialFeatures(degree=24, include_bias=False)        # 차수를 올리면 훈련 셋은 거의 완벽해지지만, 테스트 셋의 점수가 음수로 나올수도 있음(과대 적합)
 poly.fit(train_input)
 train_poly = poly.transform(train_input)
 test_poly = poly.transform(test_input)
@@ -60,5 +65,54 @@ lr.fit(train_poly, train_target)
 print(lr.score(train_poly, train_target))
 print(lr.score(test_poly, test_target))
 
+ss = StandardScaler()
+ss.fit(train_poly)
+train_scaled = ss.transform(train_poly)
+test_scaled = ss.transform(test_poly)
+
+"""
+과대 적합이 일어나지 않도록 규제를 넣어(릿지ridge, 라쏘lasso)
+릿지 : 계수를 제곱한 값을 기준으로 규제를 적용
+라쏘 : 계수의 절댓값을 기준으로 규제를 적용
+
+모델 객체를 만들 때 alpha 매개변수로 규제의 강도를 조절
+alpha 값이 크면 규제 강도가 세지므로 계수 값을 더 줄이고 조금 더 과소적합되도록 유도
+alpha는 사람이 지정해야 하는 매개변수인데, 이를 하이퍼파라미터(Hyperparameter라고 부름
+"""
+ridge = Ridge()
+ridge.fit(train_scaled, train_target)
+print(ridge.score(train_scaled, train_target))
+print(ridge.score(test_scaled, test_target))
 
 
+# 릿지 훈련
+train_score = []
+test_score = []
+
+alpha_list = [0.001, 0.01, 0.1, 1, 10, 100]
+for alpha in alpha_list:
+       # 릿지 모델을 생성
+       ridge = Ridge(alpha=alpha)
+       # 릿지 모델 훈련
+       ridge.fit(train_scaled, train_target)
+       # 훈련 점수와 테스트 점수를 저장합니다
+       train_score.append(ridge.score(train_scaled, train_target))
+       test_score.append(ridge.score(test_scaled, test_target))
+
+# plt.plot(np.log10(alpha_list), train_score)
+# plt.plot(np.log10(alpha_list), test_score)
+# plt.xlabel('alpha')
+# plt.ylabel('R^2')
+# plt.show()
+
+ridge = Ridge(alpha=0.1)
+ridge.fit(train_scaled, train_target)
+print(ridge.score(train_scaled, train_target))
+print(ridge.score(test_scaled, test_target))
+
+
+# 라쏘 훈련
+lasso = Lasso()
+lasso.fit(train_scaled, train_target)
+print(lasso.score(train_scaled, train_target))
+print(lasso.score(test_scaled, test_target))

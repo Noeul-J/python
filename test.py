@@ -7,7 +7,7 @@ def hash(text) :
     return test
 
 if __name__ == "__main__" :
-    text = sys.argv[0]
+    text = sys.argv[1]
     result = hash(text)
     print('<peon>')
     print(result)
