@@ -52,7 +52,7 @@ train_input, test_input, train_target, test_target = train_test_split(perch_full
 # poly.fit([[2, 3]])
 # print(poly.transform([[2, 3]])) # [[2. 3. 4. 6. 9.]]
 
-poly = PolynomialFeatures(degree=24, include_bias=False)        # 차수를 올리면 훈련 셋은 거의 완벽해지지만, 테스트 셋의 점수가 음수로 나올수도 있음(과대 적합)
+poly = PolynomialFeatures(degree=5, include_bias=False)        # 차수를 올리면 훈련 셋은 거의 완벽해지지만, 테스트 셋의 점수가 음수로 나올수도 있음(과대 적합)
 poly.fit(train_input)
 train_poly = poly.transform(train_input)
 test_poly = poly.transform(test_input)
@@ -116,3 +116,5 @@ lasso = Lasso()
 lasso.fit(train_scaled, train_target)
 print(lasso.score(train_scaled, train_target))
 print(lasso.score(test_scaled, test_target))
+
+print(np.sum(lasso.coef_ == 0))

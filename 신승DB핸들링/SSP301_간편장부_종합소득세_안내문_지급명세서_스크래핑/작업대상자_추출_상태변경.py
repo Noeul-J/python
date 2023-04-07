@@ -17,7 +17,7 @@ def DB_Data_Export():
                         "FROM TB100023 AS t " \
                         "LEFT JOIN TB100020 AS b ON t.CSTID=b.CSTID " \
                         "LEFT JOIN TB100022 AS a ON t.BIZ_ID=a.BIZ_ID " \
-                        "WHERE IFNULL(t.HomeTaxPrint, '')='Y' AND a.CST_TYPE_YEAR='2021' LIMIT 10;"
+                        "WHERE IFNULL(t.HomeTaxPrint, '')='Y' AND a.CST_TYPE_YEAR='2021' LIMIT 1;"
             curs.execute(targetSql)
             rs = curs.fetchall()
             
