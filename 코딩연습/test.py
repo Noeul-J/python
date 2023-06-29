@@ -1,2 +1,4 @@
-for x in range(1, 5):
-   print(" "*(5-x), "*"*(x*2-1))
+import pandas as pd
+
+df = pd.DataFrame(['1', '2', '3'])
+df.to_excel('C:\RPA\kisttest.xlsx')

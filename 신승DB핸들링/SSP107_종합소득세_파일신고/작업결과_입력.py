@@ -17,24 +17,24 @@ def Result_Input():
             regDate = sys.argv[4]
             reportId = sys.argv[5]
             
-            resultQry = "UPDATE TB100023 SET HomeTaxUpload='"+result+"', HomeTaxUpload_REGDATE='"+regDate+"', HT_REPORT_ID='"+reportId+"' WHERE BIZ_ID='"+bizId+"';"
-            curs.execute(resultQry)
-            conn.commit()
-                
-            if result == 'Y' :
-                incomeTax = sys.argv[6]
-                incomeReportNum = sys.argv[7]
-                localTax = sys.argv[8]
-                localReportNum = sys.argv[9]
-                updateQry = "UPDATE TB100022 SET INCOME_TAX='"+incomeTax+"', REPORT_NUM_INCOME='"+incomeReportNum+"', JIBANG_TAX='"+localTax+"', REPORT_NUM_WETAX='"+localReportNum+"', REQ_DATE='"+datetime.now().strftime('%Y-%m-%d %H:%M:%S')+"' WHERE BIZ_ID='"+bizId+"';"
-                curs.execute(updateQry)
-                conn.commit()
-            else :
-                errReason = sys.argv[6]
-                logTime = sys.argv[7]
-                logQry = "INSERT INTO TB700020 (CSTID, STEP_NAME, LOG, LOG_TIME) VALUES ('"+cstId+"', 'HomeTaxUpload', '"+errReason+"', '"+logTime+"');"
-                curs.execute(logQry)
-                conn.commit()
+            # resultQry = "UPDATE TB100023 SET HomeTaxUpload='"+result+"', HomeTaxUpload_REGDATE='"+regDate+"', HT_REPORT_ID='"+reportId+"' WHERE BIZ_ID='"+bizId+"';"
+            # curs.execute(resultQry)
+            # conn.commit()
+            #
+            # if result == 'Y' :
+            #     incomeTax = sys.argv[6]
+            #     incomeReportNum = sys.argv[7]
+            #     localTax = sys.argv[8]
+            #     localReportNum = sys.argv[9]
+            #     updateQry = "UPDATE TB100022 SET INCOME_TAX='"+incomeTax+"', REPORT_NUM_INCOME='"+incomeReportNum+"', JIBANG_TAX='"+localTax+"', REPORT_NUM_WETAX='"+localReportNum+"', REQ_DATE='"+datetime.now().strftime('%Y-%m-%d %H:%M:%S')+"' WHERE BIZ_ID='"+bizId+"';"
+            #     curs.execute(updateQry)
+            #     conn.commit()
+            # else :
+            #     errReason = sys.argv[6]
+            #     logTime = sys.argv[7]
+            #     logQry = "INSERT INTO TB700020 (CSTID, STEP_NAME, LOG, LOG_TIME) VALUES ('"+cstId+"', 'HomeTaxUpload', '"+errReason+"', '"+logTime+"');"
+            #     curs.execute(logQry)
+            #     conn.commit()
     finally:
         conn.close()
 Result_Input()

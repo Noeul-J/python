@@ -1,14 +1,10 @@
-import hashlib
-import sys
+number = 1234
+div = 10
+result = 0
 
-def hash(text) :
-    test = int.from_bytes(hashlib.sha256(b"H").digest()[:8], text)
-    print(test)
-    return test
+while number != 0:
+    result = result * div
+    result = result + number % div
+    number = number / div
 
-if __name__ == "__main__" :
-    text = sys.argv[1]
-    result = hash(text)
-    print('<peon>')
-    print(result)
-    print('</peon>')
+print(result)

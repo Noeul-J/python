@@ -10,15 +10,19 @@ def DB_Data_Export():
     print("mysql Connection 완료")
     try:
         with conn.cursor() as curs:
-            sql = "SELECT t.CSTID, t.BIZ_ID, IFNULL(b.CSTNAME, ''), IFNULL(b.MOBILE, ''), IFNULL(b.RESIDENT_ID, '') FROM TB100023 AS t LEFT JOIN TB100020 AS b ON t.CSTID=b.CSTID LEFT JOIN TB100022 AS a ON t.BIZ_ID=a.BIZ_ID WHERE IFNULL(t.HomeTaxUpload, '')='R' AND a.CST_TYPE_YEAR='2021' LIMIT 10;";
+            sql = "SELECT t.CSTID, t.BIZ_ID, IFNULL(b.CSTNAME, ''), IFNULL(b.MOBILE, ''), IFNULL(b.RESIDENT_ID, '') " \
+                  "FROM TB100023 AS t " \
+                  "LEFT JOIN TB100020 AS b ON t.CSTID=b.CSTID " \
+                  "LEFT JOIN TB100022 AS a ON t.BIZ_ID=a.BIZ_ID " \
+                  "WHERE IFNULL(t.HomeTaxUpload, '')='Y' AND a.CST_TYPE_YEAR='2021' LIMIT 1;";
             
             curs.execute(sql)
             rs = curs.fetchall()
-            if rs != None :
-                for row in rs:
-                    sql = "UPDATE TB100023 SET HomeTaxUpload='I' WHERE BIZ_ID='"+str(row[1])+"';"
-                    curs.execute(sql)
-                    conn.commit()
+            # if rs != None :
+            #     for row in rs:
+            #         sql = "UPDATE TB100023 SET HomeTaxUpload='I' WHERE BIZ_ID='"+str(row[1])+"';"
+            #         curs.execute(sql)
+            #         conn.commit()
             
             return rs
     finally:

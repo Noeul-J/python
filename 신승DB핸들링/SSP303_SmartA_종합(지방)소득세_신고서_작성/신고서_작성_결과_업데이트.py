@@ -15,16 +15,16 @@ def Result_Input():
             result = sys.argv[3]
             regDate = sys.argv[4]
             
-            resultSql = "UPDATE TB100023 SET SmartABookMake='"+result+"', SmartABookMake_REGDATE='"+regDate+"' WHERE BIZ_ID='"+bizId+"';"
-            curs.execute(resultSql)
-            conn.commit()
-            
-            if result == 'E' or result == 'H':
-                log = sys.argv[5]
-                logTime = sys.argv[6]
-                logSql = "INSERT INTO TB700020 (CSTID, STEP_NAME, LOG, LOG_TIME) VALUES ('"+cstId+"', 'SmartABookMake', '"+log+"', '"+logTime+"');"
-                curs.execute(logSql)
-                conn.commit()
+            # resultSql = "UPDATE TB100023 SET SmartABookMake='"+result+"', SmartABookMake_REGDATE='"+regDate+"' WHERE BIZ_ID='"+bizId+"';"
+            # curs.execute(resultSql)
+            # conn.commit()
+            #
+            # if result == 'E' or result == 'H':
+            #     log = sys.argv[5]
+            #     logTime = sys.argv[6]
+            #     logSql = "INSERT INTO TB700020 (CSTID, STEP_NAME, LOG, LOG_TIME) VALUES ('"+cstId+"', 'SmartABookMake', '"+log+"', '"+logTime+"');"
+            #     curs.execute(logSql)
+            #     conn.commit()
     finally:
         conn.close()
 Result_Input()

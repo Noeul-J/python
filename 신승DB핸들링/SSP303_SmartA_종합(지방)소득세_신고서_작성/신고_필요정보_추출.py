@@ -20,7 +20,8 @@ def Get_Report_Information():
             tgBizId = sys.argv[2]
             
             #"+str(datetime.now().year)+"
-            totalIncomeSql = "SELECT IFNULL(BIZ_NUM, ''), IFNULL(SEC_CODE, ''), IFNULL(AMOUNT_PAID, 0), IFNULL(SIM_RATIO_N, 0), IFNULL(SIM_RATIO_S, 0) FROM TB300020 WHERE CST_TYPE_YEAR='2021' AND BIZ_ID='"+str(tgBizId)+"';"
+            totalIncomeSql = "SELECT IFNULL(BIZ_NUM, ''), IFNULL(SEC_CODE, ''), IFNULL(AMOUNT_PAID, 0), " \
+                             "IFNULL(SIM_RATIO_N, 0), IFNULL(SIM_RATIO_S, 0) FROM TB300020 WHERE CST_TYPE_YEAR='2021' AND BIZ_ID='"+str(tgBizId)+"';"
             curs.execute(totalIncomeSql)
             tiRows = curs.fetchall()
             
