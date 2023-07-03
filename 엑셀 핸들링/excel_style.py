@@ -41,6 +41,8 @@ for c in range(3):
     ws.cell(row=1, column=c+1).value = "text"
     ws.cell(row=1, column=c+1).alignment = align_center
 
+
+
 #기존에 써있는 마지막 행의 다음행에 추가됨
 ws.append(['1','2','3'])
 
