@@ -1,4 +1,5 @@
 ﻿from selenium import webdriver
+from bs4 import BeautifulSoup
 from selenium.webdriver.common.keys import Keys
 import time
 import os
@@ -29,16 +30,22 @@ def img_download(url):
     #페이지 이동
     driver.get(url)
 
-    # driver.find_element_by_xpath('').click()
+    driver.find_element_by_xpath('//*[@id="query"]').send_keys('구름')
+    driver.find_element_by_xpath('//button[@class="btn_search"]').click()
+    time.sleep(0.5)
+
+    driver.find_element_by_xpath('//a[.="이미지"]').click()
+
     # elem.send_keys(Keys.PAGE_DOWN)
     # time.sleep(0.1)
     # a = driver.find_elements_by_css_selector('')
     # urllib.request.urlretrieve(url, '파일이름')
 
-    driver.close()
+    # driver.close()
 
 
 if __name__ == '__main__':
-    # url =
+    url = 'https://www.naver.com/'
+    img_download(url)
     # pool = Pool(processes=4)  # 4개의 프로세스를 사용합니다.
     # pool.map(img_download, keyword)
