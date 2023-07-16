@@ -10,5 +10,8 @@ app.include_router(test_router)
 @app.get('/')
 def index():
     return {
-        "Python": "Framework",
+       app
     }
+
+# @app.get('/db')
+# def read_db():
