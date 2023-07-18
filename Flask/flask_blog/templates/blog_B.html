@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+    <script src="/static/dist/js/color-modes.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.112.5">
+    <title>Blog Template · Bootstrap v5.3</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/blog/">
+
+    <link href="static/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .b-example-divider {
+            width: 100%;
+            height: 3rem;
+            background-color: rgba(0, 0, 0, .1);
+            border: solid rgba(0, 0, 0, .15);
+            border-width: 1px 0;
+            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+        }
+
+        .b-example-vr {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 100vh;
+        }
+
+        .bi {
+            vertical-align: -.125em;
+            fill: currentColor;
+        }
+
+        .nav-scroller {
+            position: relative;
+            z-index: 2;
+            height: 2.75rem;
+            overflow-y: hidden;
+        }
+
+        .nav-scroller .nav {
+            display: flex;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .btn-bd-primary {
+            --bd-violet-bg: #712cf9;
+            --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+            --bs-btn-font-weight: 600;
+            --bs-btn-color: var(--bs-white);
+            --bs-btn-bg: var(--bd-violet-bg);
+            --bs-btn-border-color: var(--bd-violet-bg);
+            --bs-btn-hover-color: var(--bs-white);
+            --bs-btn-hover-bg: #6528e0;
+            --bs-btn-hover-border-color: #6528e0;
+            --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+            --bs-btn-active-color: var(--bs-btn-hover-color);
+            --bs-btn-active-bg: #5a23c8;
+            --bs-btn-active-border-color: #5a23c8;
+        }
+
+        .bd-mode-toggle {
+            z-index: 1500;
+        }
+
+        @font-face {
+            font-family: 'SUITE-Regular';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/static/blog.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="check2" viewBox="0 0 16 16">
+            <path
+                d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
+        </symbol>
+        <symbol id="circle-half" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
+        </symbol>
+        <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+            <path
+                d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z" />
+            <path
+                d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z" />
+        </symbol>
+        <symbol id="sun-fill" viewBox="0 0 16 16">
+            <path
+                d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
+        </symbol>
+    </svg>
+
+    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+        <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button"
+            aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
+            <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
+                <use href="#circle-half"></use>
+            </svg>
+            <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+            <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light"
+                    aria-pressed="false">
+                    <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em">
+                        <use href="#sun-fill"></use>
+                    </svg>
+                    Light
+                    <svg class="bi ms-auto d-none" width="1em" height="1em">
+                        <use href="#check2"></use>
+                    </svg>
+                </button>
+            </li>
+            <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark"
+                    aria-pressed="false">
+                    <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em">
+                        <use href="#moon-stars-fill"></use>
+                    </svg>
+                    Dark
+                    <svg class="bi ms-auto d-none" width="1em" height="1em">
+                        <use href="#check2"></use>
+                    </svg>
+                </button>
+            </li>
+            <li>
+                <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto"
+                    aria-pressed="true">
+                    <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em">
+                        <use href="#circle-half"></use>
+                    </svg>
+                    Auto
+                    <svg class="bi ms-auto d-none" width="1em" height="1em">
+                        <use href="#check2"></use>
+                    </svg>
+                </button>
+            </li>
+        </ul>
+    </div>
+
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="aperture" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+            stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" />
+            <path
+                d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94" />
+        </symbol>
+        <symbol id="cart" viewBox="0 0 16 16">
+            <path
+                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+        </symbol>
+        <symbol id="chevron-right" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+        </symbol>
+    </svg>
+
+    <div class="container">
+        <header class="border-bottom lh-1 py-3">
+            <div class="row flex-nowrap justify-content-between align-items-center">
+                <div class="col-4 pt-1">
+                    <p>즐겁게 코딩해요
+                    <p>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <main class="container">
+        <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+            <div class="col-lg-6 px-0">
+                <h1 class="display-4 fst-italic">Blog Page by 정형주 </h1>
+                <form class="row g-3">
+                    <div class="col-auto">
+                        <input type="email" class="form-control" placeholder="Email">
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary mb-3">구독</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row g-5">
+            <div class="col-md-8">
+                <article class="blog-post">
+                    <h2>풀스택 개발자란?</h2>
+                    <p>
+                        풀스택 개발자란 백엔드, 프론트엔드, 그리고 배포(+DevOps) 기술을 혼자서도 모두 다룰 수 있는 개발자를 말한다.
+                        어이쿠 굉장히 힘들겠네? 아마 IT를 웹부터 익히려는 입문자라면 누구나 이렇게 느낄꺼다. 이미 풀스택 클론코딩을 들어본 사람이라면, 조금 익숙할 수도 있다.
+                        정말 어렵나? 어렵지! 근데 재밌다. 기술을 익히는 일이 즐거운 사람이라면, 세상에 내가 모르는 IT 기술은 존재할 수가 없다.
+                    </p>
+                    <br>
+                    <h3>나는 풀스택이 하찮았다</h3>
+                    <p>
+                        상당히 거만한 말이지만, 그랬다. 시스템 소프트웨어 개발자는 그래도 나름 부심이 있다. 이렇게 어려운 걸 하는데, 웹 정도야 뭐. 금방 하지.
+                        레고맞추기 같은 느낌이 싫어서일 뿐이지. 그래 사실 나도 그랬다. 복잡하고 한땀한땀 써야 하는 C 언어로 완벽히 이해하기 어려운 시스템에 들어가 구조를 만들고, 시스템을
+                        만드는 일이 바로
+                        개발자지.
+                        그런 부심을 가진 채, 어느 날 홈페이지를 만들어야겠다는 생각을 가지고 최신 기술을 익혀보기 시작했다. 한달이면 되겠지 했지만, 6개월이 지나도 뭐하나 제대로 익히지
+                        못했다. 윽... 만만한
+                        일이 아니네~
+                    </p>
+                    <br>
+                    <h3>첫번째 풀스택 시도가 실패한 이유1: 기본이 안됬다!</h3>
+                    <p>
+                        웹에서는 프레임워크가 많았다. 프레임워크를 익히려면 또다른 기술을 활용할 수 있어야 했고, 그 기술을 익히려면 또다른 기술을 익혀야 했다.
+                        끝도 없었다. 이게 세네가지가 조합되면 난장판이 되었다. 대충 수정해보면 되겠지. 하나를 수정하면 다른 기술이 안되고, 서로 얽키고 섥켰다.
+                        그래도 자존심이 있지. 포기는 없었다. 억지로 만들었다. 그러나 제대로 기술을 모르니, 뭔가 기능이 어색했다. 결국 상용화할 수 없었다. 완전 실패였다.
+                        기본적인 기술에 익숙하지 않다보니, 알듯 말듯한 기술로는 무리가 있었다.
+                        윽 내 6개월~~~
+                    </p>
+                    <br>
+                    <h3>첫번째 풀스택 시도가 실패한 이유2: 기술을 잘 선택해야 한다</h3>
+                    <p>
+                        웹은 항상 매년 유명한 기술이 있다. 그래서 나도 처음에는 유명한 기술을 택했다. 어떤 원칙도 없이 남들이 하니까 나도 선택을 한셈이다.
+                        그런데, 유명한 기술이 나를 생각해줄리는 만무했다. 이 기술을 익힐라면 다른 기술을 익혀야 하고, 다른 기술을 익힐라면 또다른 기술을 익혀야 하고, 대체 왜 이 기술을
+                        익혀야 하는걸까?
+                        더 충격적인 일은 유명한 기술이 다음 해에 바로 다른 유명한 기술로 바꼈다라는 점이다. 뭐야 이거! 아 기술을 잘 선택해야 하는구나!
+                    </p>
+                    <br>
+                    <h3>기술을 선택하는 기준</h3>
+                    <ul>
+                        <li> 최신 기술이어야 한다. 그래야 정보가 많다.</li>
+                        <li> 무조건 쉬워야 한다. 쉽게 구현을 할 수 있어야, 구현하면서 엮여있는 기본 기술을 익힐 수 있다</li>
+                    </ul>
+                    <br>
+
+                    <h3>내가 선택한 기술</h3>
+                    <p>
+                        내 궁극적인 목표는 원하는 아이디어가 있다면, 바로 짧은 시간에 웹이든 앱이든 구현할 수 있는 기술셋이다.
+                        그러려면 구현에 시간이 오래 걸리지 않아야 한다. 그리고 아이디어가 무엇일지 모르니 자유도가 높아야 한다.
+                        꽉 막힌 프레임워크는 무조건 탈락이다. 그리고 복잡해서 만들라면 개발자 몇 명은 있어야 하는 기술은 탈락이다.
+                        <b>무엇보다 스피드가 가장 중요하다. 하나 만드는데 6개월이 걸리면 안된다! 도전적이지만, 기술은 언제나 솔루션이 있다.</b>
+                    </p>
+                    <p style="color:blue">
+                        다음 블로그글에서 더 설명합니다~~~
+                    </p>
+                </article>
+
+                <aside class="col-md-4 blog-sidebar">
+                    <div class="p-4 mb-3 bg-light rounded">
+                        <h4>About</h4>
+                        <p class="mb-0">
+                            Dave Lee 라는 닉네임으로 활동하고 있는 현직 기획자 겸 개발자입니다. 서비스를 직접 만들고, IT 강의도 진행하며, 활동하고 있습니다.
+                            <a href="https://www.fun-coding.org">잔재미코딩 (www.fun-coding.org)</a> 블로그 사이트도 운영 중입니다.
+                        </p>
+                    </div>
+                </aside>
+            </div>
+
+    </main>
+
+    <footer class="py-5 text-center text-body-secondary bg-body-tertiary">
+        <p> 정형주 첫 웹페이지 </p>
+        <p class="mb-0">
+            <a href="#">Back to top</a>
+        </p>
+    </footer>
+    <script src="static/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

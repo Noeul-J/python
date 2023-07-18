@@ -1,14 +1,53 @@
-# Copyright 2023 eden220706
-# 
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-# 
-#     http://www.apache.org/licenses/LICENSE-2.0
-# 
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+from flask_login import UserMixin
+from db_model.mysql import conn_mysqldb
 
+class User(UserMixin):
+    
+    def __init__(self, user_id, user_email, blog_id):
+        self.id = user_id
+        self.user_email - user_email
+        self.blog_id = blog_id
+        
+    def get_id(self):
+        return str(self.id)
+    
+    @staticmethod
+    def get(user_id):
+        mysql_db = conn_mysqldb()
+        db_cursor = mysql_db.cursor()
+        sql = "SLECT * FROM user_info WHERE USER_ID ='" + str(user_id) + "'"
+        db_cursor.execute(sql)
+        user = db_cursor.fetchone()
+        if not user:
+            return None
+        
+        user = User(user_id=User[0], user_email=user[1], blog_id=user[2])
+        return user
+    
+    
+    @staticmethod
+    def find(user_email):
+        mysql_db = conn_mysqldb()
+        db_cursor = mysql_db.cursor()
+        sql = "SLECT * FROM user_info WHERE USER_EMAIL ='" + str(user_email) + "'"
+        db_cursor.execute(sql)
+        user = db_cursor.fetchone()
+        if not user:
+            return None
+        
+        user = User(user_id=User[0], user_email=user[1], blog_id=user[2])
+        return user
+    
+    
+    @staticmethod
+    def create(user_email, blog_id):
+        user = User.find(user_email)
+        if user == None:
+            mysql_db = conn_mysqldb()
+            db_cursor = mysql_db.cursor()
+            sql = "INSERT INTO user_info (USER_EMAIL, BLOG_ID) VALUES ('%s', '%s')" % (str(user_email), str(blog_id))
+            db_cursor.execute(sql)
+            mysql_db.commit()
+            return User.find(user_email)
+        else:
+            return user
