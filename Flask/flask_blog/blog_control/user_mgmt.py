@@ -5,7 +5,7 @@ class User(UserMixin):
     
     def __init__(self, user_id, user_email, blog_id):
         self.id = user_id
-        self.user_email - user_email
+        self.user_email = user_email
         self.blog_id = blog_id
         
     def get_id(self):
@@ -15,13 +15,13 @@ class User(UserMixin):
     def get(user_id):
         mysql_db = conn_mysqldb()
         db_cursor = mysql_db.cursor()
-        sql = "SLECT * FROM user_info WHERE USER_ID ='" + str(user_id) + "'"
+        sql = "SELECT * FROM user_info WHERE USER_ID = '" + str(user_id) + "'"
         db_cursor.execute(sql)
         user = db_cursor.fetchone()
         if not user:
             return None
         
-        user = User(user_id=User[0], user_email=user[1], blog_id=user[2])
+        user = User(user_id=user[0], user_email=user[1], blog_id=user[2])
         return user
     
     
@@ -29,13 +29,14 @@ class User(UserMixin):
     def find(user_email):
         mysql_db = conn_mysqldb()
         db_cursor = mysql_db.cursor()
-        sql = "SLECT * FROM user_info WHERE USER_EMAIL ='" + str(user_email) + "'"
+        sql = "SELECT * FROM user_info WHERE USER_EMAIL = '" + str(user_email) + "'"
         db_cursor.execute(sql)
         user = db_cursor.fetchone()
+        print(user)
         if not user:
             return None
         
-        user = User(user_id=User[0], user_email=user[1], blog_id=user[2])
+        user = User(user_id=user[0], user_email=user[1], blog_id=user[2])
         return user
     
     
